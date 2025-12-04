@@ -45,10 +45,10 @@ This documentation is intended for **replication, analysis, and modification** o
              +--------------------+
              |    HC-SR04         |
              |                    |
-Arduino A1 ->| TRIG               |
-Arduino A0 ->| ECHO               |
-5V --------->| VCC                |
-GND -------->| GND                |
+Arduino A1 ----> TRIG             |
+Arduino A0 ----> ECHO             |
+5V ------------> VCC              |
+GND -----------> GND              |
              +--------------------+
 
 ```
@@ -56,13 +56,13 @@ GND -------->| GND                |
 ### **3.2 Servo Motor**
 
 ```
-   +----------------------+
-   |        SERVO         |
-   |                      |
-D10 ---> Signal           |
-5V ----> +5V              |
-GND ---> GND              |
-   +----------------------+
+             +----------------------+
+             |        SERVO         |
+             |                      |
+D10 -------------> Signal           |
+5V --------------> +5V              |
+GND -------------> GND              |
+             +----------------------+
 
 ```
 
@@ -72,17 +72,18 @@ GND ---> GND              |
         +----------------+
         | Left IR sensor |
         +----------------+
-```
 
 Signal  ---> A2
 VCC     ---> 5V
 GND     ---> GND
 
 ```
+
+```
         +-----------------+
         | Right IR sensor |
         +-----------------+
-```
+
 
 Signal  ---> A3
 VCC     ---> 5V
@@ -90,36 +91,36 @@ GND     ---> GND
 
 ```
 
+```
 ### **3.4 Bluetooth Module HC-05 (optional)**
 ```
 
 ```
-             +--------------------+
-             |      HC-05         |
-             +--------------------+
-```
+        +--------------------+
+        |      HC-05         |
+        +--------------------+
 
-TX ---> Arduino RX (0)
-RX ---> Arduino TX (1)
+TX ----> Arduino RX (0)
+RX ----> Arduino TX (1)
 VCC ---> 5V
 GND ---> GND
 
 ```
-
+```
 ### **3.5 Motors via Adafruit Motor Shield**
 ```
 
 Adafruit Motor Shield (V1)
 
 ```
-  +--------------------------------------+
-  |                                      |
-M1 -->| Motor 1 (Front Left)             |
-M2 -->| Motor 2 (Front Right)            |
-M3 -->| Motor 3 (Rear Left)              |
-M4 -->| Motor 4 (Rear Right)             |
-  |                                      |
-  +--------------------------------------+
+       +--------------------------------------+
+       |                                      |
+M1 --=-----> Motor 1 (Front Left)             |
+M2 --------> Motor 2 (Front Right)            |
+M3 --------> Motor 3 (Rear Left)              |
+M4 --------> Motor 4 (Rear Right)             |
+       |                                      |
+       +--------------------------------------+
 
 ---
 
@@ -160,7 +161,7 @@ Arduino IDE → *Sketch → Include Library → Manage Libraries*
 ---
 
 ## **6. Power Requirements**
-- **Motors:** Rechargeable battery ≥ **8 V** (AA type)  
+- **Motors:** Rechargeable battery ≥ **8 V
 - **Arduino:** USB / 5 V  
 - **All grounds (GND)** must be connected
 
