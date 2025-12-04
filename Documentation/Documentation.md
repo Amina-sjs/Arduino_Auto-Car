@@ -39,6 +39,8 @@ This documentation is intended for **replication, analysis, and modification** o
 
 ## **3. Wiring Diagrams (ASCII)**
 
+![view](../Images/схема.jpg)
+
 ### **3.1 HC-SR04 Ultrasonic Sensor**
 
 ```
