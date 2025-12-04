@@ -41,4 +41,3 @@ This document provides a detailed list of all electronic and mechanical componen
 | **Chassis** | **Wood Platform** |
 | **Mounting Hardware** | **Wires** |
 | **Identification** | **"TECH FAIRIES" Label** |
-

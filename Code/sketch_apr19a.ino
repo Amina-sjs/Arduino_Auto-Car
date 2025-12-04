@@ -1,168 +1,97 @@
-/*obstacle avoiding, Bluetooth control, voice control robot car.
-   Home Page
-*/
-#include <Servo.h>
 #include <AFMotor.h>
-#define Echo A0
-#define Trig A1
-#define motor 10
-#define Speed 170
-#define spoint 103
-char value;
-int distance;
-int Left;
-int Right;
-int L = 0;
-int R = 0;
-int L1 = 0;
-int R1 = 0;
-Servo servo;
-AF_DCMotor M1(1);
-AF_DCMotor M2(2);
-AF_DCMotor M3(3);
-AF_DCMotor M4(4);
+
+AF_DCMotor motor1(1);
+AF_DCMotor motor2(2);
+AF_DCMotor motor3(3);
+AF_DCMotor motor4(4);
+
+int val1, val2, val3, val4;
+
 void setup() {
   Serial.begin(9600);
-  pinMode(Trig, OUTPUT);
-  pinMode(Echo, INPUT);
-  servo.attach(motor);
-  M1.setSpeed(Speed);
-  M2.setSpeed(Speed);
-  M3.setSpeed(Speed);
-  M4.setSpeed(Speed);
+  int speed = 100;
+
+  motor1.setSpeed(speed);
+  motor2.setSpeed(speed);
+  motor3.setSpeed(speed);
+  motor4.setSpeed(speed);
+
+  
+  motor1.run(RELEASE);
+  motor2.run(RELEASE);
+  motor3.run(RELEASE);
+  motor4.run(RELEASE);
 }
+
 void loop() {
-  //Obstacle();
-  //Bluetoothcontrol();
-  //voicecontrol();
-}
-void Bluetoothcontrol() {
-  if (Serial.available() > 0) {
-    value = Serial.read();
-    Serial.println(value);
+  val1 = analogRead(A0); // left in
+  val2 = analogRead(A2); // right in
+  val3 = analogRead(A4); // left out 
+  val4 = analogRead(A1); // right out
+
+  int speed = 80;
+  motor1.setSpeed(speed);
+  motor2.setSpeed(speed);
+  motor3.setSpeed(speed);
+  motor4.setSpeed(speed);
+
+  if (val2 >= 1000 and val1 >= 1000 and val3 >= 100 and val4 >= 100)
+  {
+    motor1.run(RELEASE);
+    motor2.run(RELEASE);
+    motor3.run(RELEASE);
+    motor4.run(RELEASE);
   }
-  if (value == 'F') {
-    forward();
-  } else if (value == 'B') {
-    backward();
-  } else if (value == 'L') {
-    left();
-  } else if (value == 'R') {
-    right();
-  } else if (value == 'S') {
-    Stop();
+    else if (val4 >= 1000) // turning right
+  {
+    int speed1 = 255;
+    motor1.run(FORWARD);
+    motor2.run(BACKWARD);
+    motor3.run(BACKWARD);
+    motor4.run(FORWARD);
+    motor1.setSpeed(speed1);
+    motor2.setSpeed(speed1);
+    motor3.setSpeed(speed1);
+    motor4.setSpeed(speed1);
   }
-}
-void Obstacle() {
-  distance = ultrasonic();
-  if (distance <= 12) {
-    Stop();
-    backward();
-    delay(100);
-    Stop();
-    L = leftsee();
-    servo.write(spoint);
-    delay(800);
-    R = rightsee();
-    servo.write(spoint);
-    if (L < R) {
-      right();
-      delay(500);
-      Stop();
-      delay(200);
-    } else if (L > R) {
-      left();
-      delay(500);
-      Stop();
-      delay(200);
-    }
-  } else {
-    forward();
+    else if (val3 >= 1000) // turning left 
+  {
+    int speed2 = 255;
+    motor1.run(BACKWARD);
+    motor2.run(FORWARD);
+    motor3.run(FORWARD);
+    motor4.run(BACKWARD);
+    motor1.setSpeed(speed2);
+    motor2.setSpeed(speed2);
+    motor3.setSpeed(speed2);
+    motor4.setSpeed(speed2);
   }
-}
-void voicecontrol() {
-  if (Serial.available() > 0) {
-    value = Serial.read();
-    Serial.println(value);
-    if (value == '^') {
-      forward();
-    } else if (value == '-') {
-      backward();
-    } else if (value == '<') {
-      L = leftsee();
-      servo.write(spoint);
-      if (L >= 10 ) {
-        left();
-        delay(500);
-        Stop();
-      } else if (L < 10) {
-        Stop();
-      }
-    } else if (value == '>') {
-      R = rightsee();
-      servo.write(spoint);
-      if (R >= 10 ) {
-        right();
-        delay(500);
-        Stop();
-      } else if (R < 10) {
-        Stop();
-      }
-    } else if (value == '*') {
-      Stop();
-    }
+  else if (val2 >= 1000) // turning right
+  {
+    motor1.run(FORWARD);
+    motor2.run(BACKWARD);
+    motor3.run(BACKWARD);
+    motor4.run(FORWARD);
   }
-}
-// Ultrasonic sensor distance reading function
-int ultrasonic() {
-  digitalWrite(Trig, LOW);
-  delayMicroseconds(4);
-  digitalWrite(Trig, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(Trig, LOW);
-  long t = pulseIn(Echo, HIGH);
-  long cm = t / 29 / 2; //time convert distance
-  return cm;
-}
-void forward() {
-  M1.run(FORWARD);
-  M2.run(FORWARD);
-  M3.run(FORWARD);
-  M4.run(FORWARD);
-}
-void backward() {
-  M1.run(BACKWARD);
-  M2.run(BACKWARD);
-  M3.run(BACKWARD);
-  M4.run(BACKWARD);
-}
-void right() {
-  M1.run(BACKWARD);
-  M2.run(BACKWARD);
-  M3.run(FORWARD);
-  M4.run(FORWARD);
-}
-void left() {
-  M1.run(FORWARD);
-  M2.run(FORWARD);
-  M3.run(BACKWARD);
-  M4.run(BACKWARD);
-}
-void Stop() {
-  M1.run(RELEASE);
-  M2.run(RELEASE);
-  M3.run(RELEASE);
-  M4.run(RELEASE);
-}
-int rightsee() {
-  servo.write(20);
-  delay(800);
-  Left = ultrasonic();
-  return Left;
-}
-int leftsee() {
-  servo.write(180);
-  delay(800);
-  Right = ultrasonic();
-  return Right;
+  else if (val1 >= 1000) // turning left 
+  {
+    motor1.run(BACKWARD);
+    motor2.run(FORWARD);
+    motor3.run(FORWARD);
+    motor4.run(BACKWARD);
+  }
+  else if (val3 >= 1000 and val1 >= 1000)
+  {
+    motor1.run(RELEASE);
+    motor2.run(RELEASE);
+    motor3.run(RELEASE);
+    motor4.run(RELEASE);
+  }
+  else 
+  {
+    motor1.run(FORWARD);
+    motor2.run(FORWARD);
+    motor3.run(FORWARD);
+    motor4.run(FORWARD);
+  }
 }
