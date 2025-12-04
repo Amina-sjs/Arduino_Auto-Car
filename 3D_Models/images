@@ -1,4 +1,44 @@
-1.jpg
-2.jpg
-3.jpg
-4.jpg
+3D_Models/1.jpg
+3D_Models/2.jpg
+3D_Models/3.jpg
+3D_Models/4.jpg
+
+
+**Electronics and Control**
+Control Board (The Brain): Arduino Uno
+
+The main microcontroller responsible for the robot's logic and processing.
+
+**Motor Driver: Motor Shield** (An expansion board mounted on top of the Arduino)
+
+Responsible for controlling the speed and direction of the four motors.
+
+**Distance Sensor (The Eyes)**: HC-SR04 Ultrasonic Sensor
+
+Used to measure distance to obstacles for avoidance.
+
+**Sensor Actuator: Mini Servo Motor** 
+
+Allows the HC-SR04 sensor to rotate and scan the surrounding area.
+
+**Power Supply: Battery Holder / Battery Pack**
+
+The power source for the robot's autonomous operation (the black, rectangular element).
+
+**⚙️ Mechanics and Movement**
+
+**Wheels and Motion: 4WD Platform** (4 Wheels)
+
+Four gear motors (yellow) that provide drive to each wheel.
+
+**Two-Level Platform** (Frame)
+
+The structural base to which all components are attached.
+
+**Mounts**
+
+Used for mounting the Arduino board, Motor Shield, and other components.
+
+Identification: "TECH FAIRIES" Label (Decorative Element)
+
+The name of our team, integrated into the design.
