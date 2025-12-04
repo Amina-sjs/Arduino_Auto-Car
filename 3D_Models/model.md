@@ -1,21 +1,21 @@
-## Фотографии 3D-модели
+# TECH FAIRIES 3D Model
 
-![View](..Images/1.jpg)
+![View](../Images/1.jpg)
 
-![View](..Images/2.jpg)
+![View](../Images/2.jpg)
 
-![View](..Images/3.jpg)
+![View](../Images/3.jpg)
 
-![View](..Images/4.jpg)
+![View](../Images/4.jpg)
 
 
-# Component Breakdown: TECH FAIRIES 3D Model
+# Component Breakdown
 
 This document provides a detailed list of all electronic and mechanical components represented in the 3D model of our autonomous cart robot.
 
 ***
 
-## 🔌 **1. Electronics and Control** (The Brain)
+##  **1. Electronics and Control** (The Brain)
 
 * **Control Board (MCU):** **Arduino Uno**
     * *Role:* The main microcontroller responsible for executing the robot's logic and algorithms.
@@ -30,7 +30,7 @@ This document provides a detailed list of all electronic and mechanical componen
 
 ---
 
-## ⚙️ **2. Mechanics and Structure** (The Body)
+##  **2. Mechanics and Structure** (The Body)
 
 | Element | Specification / Role |
 | :--- | :--- |
