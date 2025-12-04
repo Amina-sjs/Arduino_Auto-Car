@@ -1,4 +1,3 @@
-
 # **TECH FAIRIES — Project Technical Documentation**
 
 ## **1. Overview**
@@ -41,70 +40,97 @@ This documentation is intended for **replication, analysis, and modification** o
 ## **3. Wiring Diagrams (ASCII)**
 
 ### **3.1 HC-SR04 Ultrasonic Sensor**
+```
 
-                 +--------------------+
-                 |    HC-SR04         |
-                 |                    |
-  Arduino A1 <---| TRIG               |
-  Arduino A0 --->| ECHO               |
-      5V --------| VCC                |
-     GND --------| GND                |
-                 +--------------------+
+```
+             +--------------------+
+             |    HC-SR04         |
+             |                    |
+```
 
+Arduino A1 <---| TRIG               |
+Arduino A0 --->| ECHO               |
+5V --------| VCC                |
+GND --------| GND                |
++--------------------+
+
+```
 
 ### **3.2 Servo Motor**
+```
 
-       +----------------------+
-       |        SERVO         |
-       |                      |
+```
+   +----------------------+
+   |        SERVO         |
+   |                      |
+```
+
 D10 ---> Signal               |
 5V ----> +5V                  |
 GND ---> GND                  |
-       +----------------------+
++----------------------+
 
+```
 
 ### **3.3 Line IR Sensors**
+```
 
-            +----------------+
-            | Left IR sensor |
-            +----------------+
-  Signal  ---> A2
-  VCC     ---> 5V
-  GND     ---> GND
+```
+        +----------------+
+        | Left IR sensor |
+        +----------------+
+```
 
-            +-----------------+
-            | Right IR sensor |
-            +-----------------+
-  Signal  ---> A3
-  VCC     ---> 5V
-  GND     ---> GND
+Signal  ---> A2
+VCC     ---> 5V
+GND     ---> GND
 
+```
+        +-----------------+
+        | Right IR sensor |
+        +-----------------+
+```
+
+Signal  ---> A3
+VCC     ---> 5V
+GND     ---> GND
+
+```
 
 ### **3.4 Bluetooth Module HC-05 (optional)**
+```
 
-                 +--------------------+
-                 |      HC-05         |
-                 +--------------------+
-  TX ---> Arduino RX (0)
-  RX ---> Arduino TX (1)
-  VCC ---> 5V
-  GND ---> GND
+```
+             +--------------------+
+             |      HC-05         |
+             +--------------------+
+```
 
+TX ---> Arduino RX (0)
+RX ---> Arduino TX (1)
+VCC ---> 5V
+GND ---> GND
+
+```
 
 ### **3.5 Motors via Adafruit Motor Shield**
 ```
 
 Adafruit Motor Shield (V1)
 
-      +--------------------------------------+
-      |                                      |
+```
+  +--------------------------------------+
+  |                                      |
+```
+
 M1 -->| Motor 1 (Front Left)                 |
 M2 -->| Motor 2 (Front Right)                |
 M3 -->| Motor 3 (Rear Left)                  |
 M4 -->| Motor 4 (Rear Right)                 |
-      |                                      |
-      +--------------------------------------+
+|                                      |
++--------------------------------------+
 
+```
 
 ---
 
@@ -158,4 +184,6 @@ Arduino IDE → *Sketch → Include Library → Manage Libraries*
 - Optimize **chassis and cable management**  
 - Add additional **sensors or camera module**  
 - Integrate **ESP32** with Wi-Fi for remote control
+
+---
 
