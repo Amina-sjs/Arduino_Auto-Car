@@ -9,7 +9,7 @@ It can interact autonomously with its environment and perform various tasks, inc
 ---
 
 
-![Photo](/Images/перед 2.jpg)
+![Photo](./Images/перед 2.jpg)
 
 
 ## Main Features
@@ -42,7 +42,7 @@ With the **HC-05 module**, the robot can receive the following commands:
 ## 3D Model
 The complete 3D model of the robot is created in **TinkerCAD**, showing the structure of all components:  
 
-![Photo](../Images/1.jpg) 
+![Photo](./Images/1.jpg) 
 
 
 [3D Model Tech Fairies](https://www.tinkercad.com/things/fstViYy1P9D/edit?returnTo=%2Fdashboard%2Fcollections%2FeZgqgnvjpSY%2F3d)
@@ -52,7 +52,7 @@ The complete 3D model of the robot is created in **TinkerCAD**, showing the stru
 ## Circuit Diagram
 The wiring and connections diagram is available in **TinkerCAD**:  
 
-![Photo](../Images/схема.jpg) 
+![Photo](./Images/схема.jpg) 
 
 
 [Circuit Diagram](https://www.tinkercad.com/things/h6YwGCP9HN5-shiny-robo/editel)
