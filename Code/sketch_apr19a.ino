@@ -1,197 +1,156 @@
-// ============================================================================
-//  TECH FAIRIES ROBOT — LINE FOLLOWING SYSTEM (4 ANALOG IR SENSORS)
-//  Motor Driver: Adafruit Motor Shield V1
-//  This code is fully documented so ANY reader can understand the logic.
-// ============================================================================
-
+#include <Servo.h>
 #include <AFMotor.h>
-
-// ============================================================================
-//  MOTOR DEFINITIONS
-//  Motor ports on Adafruit Motor Shield:
-//  M1 — Front Left
-//  M2 — Front Right
-//  M3 — Rear Left
-//  M4 — Rear Right
-// ============================================================================
-AF_DCMotor motor1(1);
-AF_DCMotor motor2(2);
-AF_DCMotor motor3(3);
-AF_DCMotor motor4(4);
-
-// ============================================================================
-//  IR SENSOR INPUTS (4 analog sensors)
-//  Placement:
-//     OUTSIDE LEFT  (A4) — val3
-//     INSIDE LEFT   (A0) — val1
-//     INSIDE RIGHT  (A2) — val2
-//     OUTSIDE RIGHT (A1) — val4
-//  Inside sensors detect main line.
-//  Outside sensors detect sharp turns and edges.
-// ============================================================================
-int val1, val2, val3, val4;
-
-// ============================================================================
-//  SETUP
-// ============================================================================
+#define Echo A0
+#define Trig A1
+#define motor 10
+#define Speed 100
+#define spoint 103
+#define IR_LEFT A2
+#define IR_RIGHT A3
+char value;
+int distance;
+int Left;
+int Right;
+int L = 0;
+int R = 0;
+int L1 = 0;
+int R1 = 0;
+Servo servo;
+AF_DCMotor M1(1);
+AF_DCMotor M2(2);
+AF_DCMotor M3(3);
+AF_DCMotor M4(4);
 void setup() {
   Serial.begin(9600);
-
-  int defaultSpeed = 100;
-
-  // Set initial speeds
-  motor1.setSpeed(defaultSpeed);
-  motor2.setSpeed(defaultSpeed);
-  motor3.setSpeed(defaultSpeed);
-  motor4.setSpeed(defaultSpeed);
-
-  // Motors off by default
-  motor1.run(RELEASE);
-  motor2.run(RELEASE);
-  motor3.run(RELEASE);
-  motor4.run(RELEASE);
+  pinMode(IR_LEFT, INPUT);
+  pinMode(IR_RIGHT, INPUT);
+  pinMode(Trig, OUTPUT);
+  pinMode(Echo, INPUT);
+  servo.attach(motor);
+  M1.setSpeed(Speed);
+  M2.setSpeed(Speed);
+  M3.setSpeed(Speed);
+  M4.setSpeed(Speed);
 }
-
-
-// ============================================================================
-//  MAIN LOOP
-// ============================================================================
 void loop() {
+  //LineFollowing();
+  //Obstacle();
+  //Bluetoothcontrol();
+}
+void LineFollowing() {
+  int leftIR = analogRead(IR_LEFT);
+  int rightIR = analogRead(IR_RIGHT);
 
-  // --------------------------------------------------------------------------
-  //  READ SENSOR VALUES
-  // --------------------------------------------------------------------------
-  val1 = analogRead(A0); // Inside Left
-  val2 = analogRead(A2); // Inside Right
-  val3 = analogRead(A4); // Outside Left
-  val4 = analogRead(A1); // Outside Right
+  bool leftOnLine = (leftIR < 700);
+  bool rightOnLine = (rightIR < 700);
 
-  // Adjust base speed
-  int baseSpeed = 80;
-  motor1.setSpeed(baseSpeed);
-  motor2.setSpeed(baseSpeed);
-  motor3.setSpeed(baseSpeed);
-  motor4.setSpeed(baseSpeed);
-
-
-  // ========================================================================
-  //   DECISION LOGIC OVERVIEW
-  //
-  //     1) FULL STOP  → if robot sees too much black everywhere
-  //     2) HARD RIGHT → strong black on OUTSIDE RIGHT sensor
-  //     3) HARD LEFT  → strong black on OUTSIDE LEFT sensor
-  //     4) SOFT RIGHT → inside right sees line
-  //     5) SOFT LEFT  → inside left sees line
-  //     6) SPECIAL STOP → left inside + left outside triggered
-  //     7) DEFAULT     → move forward
-  //
-  //   “>= 1000” means strong black reading.
-  // ========================================================================
-
-
-  // ============================================================================
-  //  (1) FULL STOP — Robot has lost the line or reached special area
-  //  When both inner sensors AND outer sensors see black → stop everything.
-  // ============================================================================
-  if (val2 >= 1000 && val1 >= 1000 && val3 >= 100 && val4 >= 100) {
-
-    motor1.run(RELEASE);
-    motor2.run(RELEASE);
-    motor3.run(RELEASE);
-    motor4.run(RELEASE);
+  if (leftOnLine && rightOnLine) {
+    forward();
   }
-
-
-  // ============================================================================
-  //  (2) HARD RIGHT TURN — OUTSIDE RIGHT sensor detects black
-  //  This means the line is sharply turning right.
-  //  Robot should pivot strongly.
-  // ============================================================================
-  else if (val4 >= 1000) {
-
-    int turnSpeed = 255; // max speed for sharp turn
-
-    motor1.run(FORWARD);
-    motor2.run(BACKWARD);
-    motor3.run(BACKWARD);
-    motor4.run(FORWARD);
-
-    motor1.setSpeed(turnSpeed);
-    motor2.setSpeed(turnSpeed);
-    motor3.setSpeed(turnSpeed);
-    motor4.setSpeed(turnSpeed);
+  else if (leftOnLine && !rightOnLine) {
+    left();
   }
-
-
-  // ============================================================================
-  //  (3) HARD LEFT TURN — OUTSIDE LEFT sensor detects black
-  //  Sharp left turn detected.
-  // ============================================================================
-  else if (val3 >= 1000) {
-
-    int turnSpeed = 255;
-
-    motor1.run(BACKWARD);
-    motor2.run(FORWARD);
-    motor3.run(FORWARD);
-    motor4.run(BACKWARD);
-
-    motor1.setSpeed(turnSpeed);
-    motor2.setSpeed(turnSpeed);
-    motor3.setSpeed(turnSpeed);
-    motor4.setSpeed(turnSpeed);
+  else if (!leftOnLine && rightOnLine) {
+    right();
   }
-
-
-  // ============================================================================
-  //  (4) SOFT RIGHT TURN — RIGHT inside sensor sees line
-  //  Minor correction to the right.
-  // ============================================================================
-  else if (val2 >= 1000) {
-
-    motor1.run(FORWARD);
-    motor2.run(BACKWARD);
-    motor3.run(BACKWARD);
-    motor4.run(FORWARD);
+  else { 
+    Stop();
   }
-
-
-  // ============================================================================
-  //  (5) SOFT LEFT TURN — LEFT inside sensor sees line
-  //  Minor correction to the left.
-  // ============================================================================
-  else if (val1 >= 1000) {
-
-    motor1.run(BACKWARD);
-    motor2.run(FORWARD);
-    motor3.run(FORWARD);
-    motor4.run(BACKWARD);
+}
+void Bluetoothcontrol() {
+  if (Serial.available() > 0) {
+    value = Serial.read();
+    Serial.println(value);
   }
-
-
-  // ============================================================================
-  //  (6) SPECIAL STOP CASE
-  //  If both LEFT sensors trigger strongly → stop
-  //  Often used as checkpoint or final marker.
-  // ============================================================================
-  else if (val3 >= 1000 && val1 >= 1000) {
-
-    motor1.run(RELEASE);
-    motor2.run(RELEASE);
-    motor3.run(RELEASE);
-    motor4.run(RELEASE);
+  if (value == 'F') {
+    forward();
+  } else if (value == 'B') {
+    backward();
+  } else if (value == 'L') {
+    left();
+  } else if (value == 'R') {
+    right();
+  } else if (value == 'S') {
+    Stop();
   }
-
-
-  // ============================================================================
-  //  (7) DEFAULT — MOVE FORWARD
-  //  If no turning conditions are active, continue following the line.
-  // ============================================================================
-  else {
-
-    motor1.run(FORWARD);
-    motor2.run(FORWARD);
-    motor3.run(FORWARD);
-    motor4.run(FORWARD);
+}
+void Obstacle() {
+  distance = ultrasonic();
+  if (distance <= 12) {
+    Stop();
+    backward();
+    delay(100);
+    Stop();
+    L = leftsee();
+    servo.write(spoint);
+    delay(800);
+    R = rightsee();
+    servo.write(spoint);
+    if (L < R) {
+      right();
+      delay(500);
+      Stop();
+      delay(200);
+    } else if (L > R) {
+      left();
+      delay(500);
+      Stop();
+      delay(200);
+    }
+  } else {
+    forward();
   }
+}
+// Ultrasonic sensor distance reading function
+int ultrasonic() {
+  digitalWrite(Trig, LOW);
+  delayMicroseconds(4);
+  digitalWrite(Trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(Trig, LOW);
+  long t = pulseIn(Echo, HIGH);
+  long cm = t / 29 / 2; //time convert distance
+  return cm;
+}
+void forward() {
+  M1.run(FORWARD);
+  M2.run(FORWARD);
+  M3.run(FORWARD);
+  M4.run(FORWARD);
+}
+void backward() {
+  M1.run(BACKWARD);
+  M2.run(BACKWARD);
+  M3.run(BACKWARD);
+  M4.run(BACKWARD);
+}
+void right() {
+  M1.run(BACKWARD);
+  M2.run(BACKWARD);
+  M3.run(FORWARD);
+  M4.run(FORWARD);
+}
+void left() {
+  M1.run(FORWARD);
+  M2.run(FORWARD);
+  M3.run(BACKWARD);
+  M4.run(BACKWARD);
+}
+void Stop() {
+  M1.run(RELEASE);
+  M2.run(RELEASE);
+  M3.run(RELEASE);
+  M4.run(RELEASE);
+}
+int rightsee() {
+  servo.write(20);
+  delay(800);
+  Left = ultrasonic();
+  return Left;
+}
+int leftsee() {
+  servo.write(180);
+  delay(800);
+  Right = ultrasonic();
+  return Right;
 }
