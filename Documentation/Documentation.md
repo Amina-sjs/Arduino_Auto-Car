@@ -91,9 +91,9 @@ GND     ---> GND
 
 ```
 
-```
+
 ### **3.4 Bluetooth Module HC-05 (optional)**
-```
+
 
 ```
         +--------------------+
@@ -106,9 +106,9 @@ VCC ---> 5V
 GND ---> GND
 
 ```
-```
+
 ### **3.5 Motors via Adafruit Motor Shield**
-```
+
 
 Adafruit Motor Shield (V1)
 
@@ -122,6 +122,7 @@ M4 --------> Motor 4 (Rear Right)             |
        |                                      |
        +--------------------------------------+
 
+```
 ---
 
 ## **4. Software and Libraries**
