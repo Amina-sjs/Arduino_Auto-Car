@@ -40,40 +40,33 @@ This documentation is intended for **replication, analysis, and modification** o
 ## **3. Wiring Diagrams (ASCII)**
 
 ### **3.1 HC-SR04 Ultrasonic Sensor**
-```
 
 ```
              +--------------------+
              |    HC-SR04         |
              |                    |
-```
-
-Arduino A1 <---| TRIG               |
-Arduino A0 --->| ECHO               |
-5V --------| VCC                |
-GND --------| GND                |
-+--------------------+
+Arduino A1 ->| TRIG               |
+Arduino A0 ->| ECHO               |
+5V --------->| VCC                |
+GND -------->| GND                |
+             +--------------------+
 
 ```
 
 ### **3.2 Servo Motor**
-```
 
 ```
    +----------------------+
    |        SERVO         |
    |                      |
-```
-
-D10 ---> Signal               |
-5V ----> +5V                  |
-GND ---> GND                  |
-+----------------------+
+D10 ---> Signal           |
+5V ----> +5V              |
+GND ---> GND              |
+   +----------------------+
 
 ```
 
 ### **3.3 Line IR Sensors**
-```
 
 ```
         +----------------+
@@ -121,16 +114,12 @@ Adafruit Motor Shield (V1)
 ```
   +--------------------------------------+
   |                                      |
-```
-
-M1 -->| Motor 1 (Front Left)                 |
-M2 -->| Motor 2 (Front Right)                |
-M3 -->| Motor 3 (Rear Left)                  |
-M4 -->| Motor 4 (Rear Right)                 |
-|                                      |
-+--------------------------------------+
-
-```
+M1 -->| Motor 1 (Front Left)             |
+M2 -->| Motor 2 (Front Right)            |
+M3 -->| Motor 3 (Rear Left)              |
+M4 -->| Motor 4 (Rear Right)             |
+  |                                      |
+  +--------------------------------------+
 
 ---
 
