@@ -70,3 +70,22 @@ The project demonstrates the integration of **mechanics, electronics, sensors, a
 The robot performs autonomous movement, responds to obstacles, follows a line, and can be controlled via Bluetooth.  
 
 > Full technical information and implementation details are available in the [Documentation](../Documentation/Documentation.md).
+> 
+> ## Team Contribution
+
+The project was executed with the following distribution of roles and responsibilities:
+
+### Mamadzanova Amina:
+* Developed the core control code for the robot.
+* Performed soldering of electronic components and wires to ensure reliable connections.
+* Authored the complete technical documentation for the project.
+
+### Mitalipova Saiida:
+* Assembled the mechanical structure of the robot.
+* Implemented and configured the "Obstacle Avoidance" mode.
+* Configured and tested the Bluetooth module (HC-05).
+
+### Mekishova Seyil:
+* Developed the 3D model of the robot (in TinkerCAD).
+* Implemented and configured the "Line Following" mode.
+* Conducted overall testing, debugging, and fault elimination across all robot systems.
