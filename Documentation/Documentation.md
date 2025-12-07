@@ -42,16 +42,16 @@ For better understanding of the mechanical construction and component placement,
 #### Component Layout and WiringTop View with Electrical Connections
 Shows the layout of the main microcontroller, motor shield, and the ultrasonic sensor mounted on the servo motor.
 
-!(../Images/вверх.jpg) 
+![View](../Images/вверх.jpg)
 
 #### Component Layout and Wiring
 
-!(../Images/соединения.jpg) 
+![View](../Images/соединения.jpg)
 
 #### Bottom View
 Shows the positioning of the Line IR sensors and the motor mounting mechanism.
 
-!(../Images/низ.jpg) 
+![View](../Images/низ.jpg)
 
 ---
 
