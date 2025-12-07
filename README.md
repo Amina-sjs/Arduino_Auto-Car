@@ -72,8 +72,33 @@ A demonstration of the robot in action:
 The project demonstrates the integration of **mechanics, electronics, sensors, and programming**.  
 The robot performs autonomous movement, responds to obstacles, follows a line, and can be controlled via Bluetooth.  
 
+---
 
-> ## Team Contribution
+## Setup and Installation
+
+To replicate this project, follow these steps:
+
+### 1. Hardware Assembly
+The complete wiring is detailed in the [Documentation](./Documentation/Documentation.md).
+
+* **Mechanical:** Assemble the chassis and mount the motors, wheels.
+* **Wiring:** Connect all components to the Arduino UNO via the Adafruit Motor Shield as described in the technical documentation.
+
+### 2. Software Requirements
+You must install the following libraries in the Arduino IDE:
+
+1.  **`Servo.h`** (Standard Arduino Library)
+2.  **`AFMotor.h`** (Adafruit Motor Shield V1 Library)
+
+To install: Open Arduino IDE → *Sketch → Include Library → Manage Libraries*, then search for and install `AFMotor`.
+
+### 3. Code Upload
+1.  Open the main code file (`sketch_apr19a.ino`) in the Arduino IDE.
+2.  Connect the Arduino board to your computer.
+3.  Select the correct board and port (`Tools` menu).
+4.  Upload the code to the Arduino.
+
+ ## Team Contribution
 
 The project was executed with the following distribution of roles and responsibilities:
 
