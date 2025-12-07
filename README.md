@@ -4,13 +4,14 @@
 The robot is built on **Arduino**, equipped with **four motors**, **two line IR sensors**, an **ultrasonic sensor on a servo**, and a **Bluetooth module**.  
 It can interact autonomously with its environment and perform various tasks, including line following and obstacle avoidance.
 
-> Full details about assembly, wiring, components, and code are provided in the [Documentation](../Documentation/Documentation.md).
+> Full details about assembly, wiring, components, and code are provided in the [Documentation](./Documentation/Documentation.md).
 
 ---
 
 
-![Photo](./Images/перед 2.jpg)
+![Photo](Images/5).
 
+![Photo](Images/перед1.jpg).
 
 ## Main Features
 
@@ -69,8 +70,7 @@ A demonstration of the robot in action:
 The project demonstrates the integration of **mechanics, electronics, sensors, and programming**.  
 The robot performs autonomous movement, responds to obstacles, follows a line, and can be controlled via Bluetooth.  
 
-> Full technical information and implementation details are available in the [Documentation](../Documentation/Documentation.md).
-> 
+
 > ## Team Contribution
 
 The project was executed with the following distribution of roles and responsibilities:
