@@ -46,7 +46,7 @@ The complete 3D model of the robot is created in **TinkerCAD**, showing the stru
 ![Photo](./Images/1.jpg) 
 
 
-[3D Model Tech Fairies](https://www.tinkercad.com/things/fstViYy1P9D/edit?returnTo=%2Fdashboard%2Fcollections%2FeZgqgnvjpSY%2F3d)
+[3D Model Tech Fairies](https://www.google.com/url?q=https://www.tinkercad.com/things/fstViYy1P9D/edit?returnTo%3D%252Fdashboard%252Fcollections%252FeZgqgnvjpSY%252F3d&sa=D&source=editors&ust=1765123325273558&usg=AOvVaw0RorRAl4g6BI-XW940vZ0z)
 
 ---
 
@@ -56,7 +56,7 @@ The wiring and connections diagram is available in **TinkerCAD**:
 ![Photo](./Images/схема.jpg) 
 
 
-[Circuit Diagram](https://www.tinkercad.com/things/h6YwGCP9HN5-shiny-robo/editel)
+[Circuit Diagram](https://www.tinkercad.com/things/h6YwGCP9HN5-shiny-robo/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=bESzTUU_fb59zaS0xiuV8ZJ-GbVXSazhXQoIXQs_vr8)
 
 ---
 
