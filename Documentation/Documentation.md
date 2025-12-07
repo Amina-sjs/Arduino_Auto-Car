@@ -35,6 +35,24 @@ This documentation is intended for **replication, analysis, and modification** o
 
 > **All electrical connections** are made using **male-to-female wires** and **soldering** to ensure reliable operation.
 
+### 2.3 Physical Layout (Views)
+
+For better understanding of the mechanical construction and component placement, the top and bottom views of the robot are provided below.
+
+#### Component Layout and WiringTop View with Electrical Connections
+Shows the layout of the main microcontroller, motor shield, and the ultrasonic sensor mounted on the servo motor.
+
+!(../Images/вверх.jpg) 
+
+#### Component Layout and Wiring
+
+!(../Images/соединения.jpg) 
+
+#### Bottom View
+Shows the positioning of the Line IR sensors and the motor mounting mechanism.
+
+!(../Images/низ.jpg) 
+
 ---
 
 ## **3. Wiring Diagrams (ASCII)**

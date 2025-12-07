@@ -11,7 +11,9 @@ It can interact autonomously with its environment and perform various tasks, inc
 
 ![Photo](Images/5).
 
-![Photo](Images/перед1.jpg).
+![Photo](Images/6.jpg).
+
+![Photo](Images/6.jpg).
 
 ## Main Features
 
